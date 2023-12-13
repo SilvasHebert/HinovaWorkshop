@@ -10,3 +10,11 @@ Prova de conhecimento para um processo seletivo React Native no Grupo Hinova
 - @react-navigation/native-stack
 - react-native-screens
 - react-native-safe-area-context
+
+## Styled Components
+
+- styled-components
+
+## Axios
+
+- axios
