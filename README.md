@@ -18,3 +18,8 @@ Prova de conhecimento para um processo seletivo React Native no Grupo Hinova
 ## Axios
 
 - axios
+
+## React Native Paper
+
+- react-native-paper
+- react-native-vector-icons

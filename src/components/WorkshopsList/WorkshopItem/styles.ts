@@ -1,5 +1,5 @@
 import styled from 'styled-components/native';
-import colors from '../../styles/colors';
+import colors from '../../../styles/colors';
 
 export const WorkshopContainer = styled.TouchableOpacity`
   padding: 20px;
@@ -20,6 +20,8 @@ export const Image = styled.Image.attrs({
   width: 200px;
   border-radius: 12px;
 `;
+
+export const Information = styled.View``;
 
 export const Name = styled.Text`
   font-weight: bold;

@@ -1,12 +1,15 @@
-import React, {useEffect, useState} from 'react';
-import {ActivityIndicator} from 'react-native';
+import React from 'react';
 
-import axios from 'axios';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
+import {useGet} from '../../hooks/useGet';
+import {FullLoading} from '../../components/FullLoading';
+import {AppNavigation} from '../../routes/app.routes';
 import {FlatList} from './styles';
-import {Workshop} from '../../components/Workshop';
+import {WorkshopItem} from '../../components/WorkshopsList/WorkshopItem';
+import {ListRenderItemInfo} from 'react-native';
 
-type Officina = {
+export type Workshop = {
   Id: number;
   Nome: string;
   Descricao: string;
@@ -23,46 +26,34 @@ type Officina = {
   Ativo: boolean;
 };
 
-type OficinaAxiosRequest = {
-  data: {
-    ListaOficinas: Officina[];
-    RetornoErro: {
-      retornoErro: string;
-    };
-    Token: string;
+type WorkshopAxiosRequest = {
+  ListaOficinas: Workshop[];
+  RetornoErro: {
+    retornoErro: string;
   };
+  Token: string;
 };
 
-export function Home() {
-  const [isLoading, setIsLoading] = useState(true);
-  const [workshops, setWorkshops] = useState<Officina[]>([]);
+export type HomeParams = NativeStackScreenProps<AppNavigation, 'Home'>;
 
-  const getWorkshops = async () => {
-    const {data}: OficinaAxiosRequest = await axios.get(
-      '/api/Oficina?codigoAssociacao=601&cpfAssociado=""',
-    );
+export function Home({navigation}: HomeParams) {
+  const {data: workshopRequest, isFetching} = useGet<WorkshopAxiosRequest>(
+    '/api/Oficina?codigoAssociacao=601&cpfAssociado=""',
+  );
 
-    if (data && data.ListaOficinas) {
-      setWorkshops(data.ListaOficinas);
-    } else {
-      setWorkshops([]);
-    }
-
-    setIsLoading(false);
-  };
-
-  useEffect(() => {
-    getWorkshops();
-  }, []);
-
-  if (isLoading) {
-    return <ActivityIndicator size="large" />;
+  if (isFetching) {
+    return <FullLoading />;
   }
 
   return (
     <FlatList
-      data={workshops}
-      renderItem={({item}) => <Workshop workshop={item} />}
+      data={workshopRequest?.ListaOficinas}
+      renderItem={(itemData: ListRenderItemInfo<Workshop>) => (
+        <WorkshopItem
+          workshop={itemData.item}
+          onPress={() => navigation.navigate('WorkshopDetails', itemData.item)}
+        />
+      )}
     />
   );
 }
