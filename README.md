@@ -1,8 +1,16 @@
 # HinovaWorkshop
 
-## Prova de conhecimento para um processo seletivo React Native no Grupo Hinova
+Prova de conhecimento para um processo seletivo React Native no Grupo Hinova
 
-# Bibliotecas Adicionais
+## Instruções
+
+- npm install
+- npm run start
+- npm run android
+
+\*Arquivo APK já gerado na ultima versão em ./build
+
+## Bibliotecas Adicionais
 
 - @react-navigation/native
 - @react-navigation/native-stack
