@@ -8,7 +8,7 @@ Prova de conhecimento para um processo seletivo React Native no Grupo Hinova
 - npm run start
 - npm run android
 
-\*Arquivo APK já gerado na ultima versão em ./build
+\*Arquivo APK já gerado na ultima versão em ./build-apk
 
 ## Bibliotecas Adicionais
 
