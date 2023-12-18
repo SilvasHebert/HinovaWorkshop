@@ -1,6 +1,6 @@
 import {PermissionsAndroid} from 'react-native';
 
-type Location = {
+export type Location = {
   latitude: number;
   longitude: number;
 };

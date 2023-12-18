@@ -5,6 +5,7 @@ import {Workshop} from '../../../screens/Home';
 import {
   calculateDistance,
   requestLocationPermission,
+  Location,
 } from '../../../utils/location';
 import {
   WorkshopContainer,
@@ -26,7 +27,7 @@ export function WorkshopItem({
   workshop: Workshop;
   onPress: () => void;
 }) {
-  const [currentLocation, setCurrentLocation] = useState(null);
+  const [currentLocation, setCurrentLocation] = useState<Location | null>(null);
   const [workshopDistance, setWorkshopDistance] = useState('');
 
   useEffect(() => {
@@ -44,8 +45,8 @@ export function WorkshopItem({
     }
 
     const distace = calculateDistance(currentLocation, {
-      latitude: workshop.Latitude,
-      longitude: workshop.Longitude,
+      latitude: parseFloat(workshop.Latitude),
+      longitude: parseFloat(workshop.Longitude),
     });
 
     if (distace) {
@@ -66,9 +67,11 @@ export function WorkshopItem({
           </ShortDescription>
         </Left>
         <Right>
-          <DistaceContainer>
-            <Distance>{workshopDistance}</Distance>
-          </DistaceContainer>
+          {workshopDistance ? (
+            <DistaceContainer>
+              <Distance>{workshopDistance}</Distance>
+            </DistaceContainer>
+          ) : null}
         </Right>
       </Information>
     </WorkshopContainer>

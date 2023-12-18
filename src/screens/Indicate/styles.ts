@@ -1,4 +1,6 @@
 import styled from 'styled-components/native';
+import {Text} from 'react-native-paper';
+
 import colors from '../../styles/colors';
 
 export const Container = styled.KeyboardAvoidingView`
@@ -7,7 +9,7 @@ export const Container = styled.KeyboardAvoidingView`
   height: 100%;
 `;
 
-export const Title = styled.Text`
+export const Title = styled(Text)`
   color: ${colors.white};
   font-size: 26px;
   width: 70%;

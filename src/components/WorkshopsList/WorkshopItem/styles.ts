@@ -40,7 +40,9 @@ export const Name = styled(Text)`
   color: ${colors.background};
 `;
 
-export const ShortDescription = styled(Text)``;
+export const ShortDescription = styled(Text)`
+  color: ${colors.background};
+`;
 
 export const Address = styled(Text)``;
 
@@ -56,5 +58,5 @@ export const DistaceContainer = styled.View`
 
 export const Distance = styled(Text)`
   font-weight: bold;
-  color: ${colors.black};
+  color: ${colors.background};
 `;
