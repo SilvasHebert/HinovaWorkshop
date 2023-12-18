@@ -34,7 +34,7 @@ type WorkshopAxiosRequest = {
   Token: string;
 };
 
-export type HomeParams = NativeStackScreenProps<AppNavigation, 'Home'>;
+export type HomeParams = NativeStackScreenProps<AppNavigation, 'Tab'>;
 
 export function Home({navigation}: HomeParams) {
   const {data: workshopRequest, isFetching} = useGet<WorkshopAxiosRequest>(

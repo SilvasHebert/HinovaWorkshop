@@ -1,5 +1,4 @@
 import React from 'react';
-import {Button} from 'react-native-paper';
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 
 import {ShortDescription} from '../../components/WorkshopsList/WorkshopItem/styles';
@@ -15,9 +14,6 @@ import {
   Email,
   FirstPhone,
   SecondPhone,
-  Recommendation,
-  RecommendationButton,
-  RecommendationText,
 } from './styles';
 
 export type WorkshopDetailsParams = NativeStackScreenProps<
@@ -25,8 +21,8 @@ export type WorkshopDetailsParams = NativeStackScreenProps<
   'WorkshopDetails'
 >;
 
-export function WorkshopDetails({navigation, route}: WorkshopDetailsParams) {
-  const workshop = route.params.workshop;
+export function WorkshopDetails({route}: WorkshopDetailsParams) {
+  const workshop = route.params;
 
   return (
     <Container>
@@ -34,19 +30,12 @@ export function WorkshopDetails({navigation, route}: WorkshopDetailsParams) {
       <Details>
         <Name>{workshop.Nome}</Name>
         <ShortDescription>{workshop.DescricaoCurta}</ShortDescription>
-        <Description>{workshop.Descricao}</Description>
         <Address>{workshop.Endereco}</Address>
+        <Description>{workshop.Descricao}</Description>
         <Email>{workshop.Email}</Email>
         <FirstPhone>{workshop.Telefone1}</FirstPhone>
         <SecondPhone>{workshop.Telefone2}</SecondPhone>
       </Details>
-      <Recommendation>
-        <Button
-          mode="contained"
-          onPress={() => navigation.navigate('Indicate')}>
-          Indique um Amigo
-        </Button>
-      </Recommendation>
     </Container>
   );
 }

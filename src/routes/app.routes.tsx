@@ -5,14 +5,13 @@ import {
   createNativeStackNavigator,
 } from '@react-navigation/native-stack';
 
-import {Home, Workshop} from '../screens/Home';
+import {Workshop} from '../screens/Home';
 import {WorkshopDetails} from '../screens/WorkshopDetails';
-import {Indicate} from '../screens/Indicate';
+import TabRoutes from './tab.routes';
 
 export type AppNavigation = {
-  Home: undefined;
+  Tab: undefined;
   WorkshopDetails: Workshop;
-  Indicate: undefined;
 };
 
 export type AppTypes = NativeStackNavigationProp<AppNavigation>;
@@ -21,21 +20,16 @@ const Stack = createNativeStackNavigator<AppNavigation>();
 
 export function AppRoutes() {
   return (
-    <Stack.Navigator>
+    <Stack.Navigator screenOptions={{headerShown: false}}>
       <Stack.Screen
-        name="Home"
+        name="Tab"
         options={{title: 'Oficinas'}}
-        component={Home}
+        component={TabRoutes}
       />
       <Stack.Screen
         name="WorkshopDetails"
         options={{title: 'Detalhes da Oficina'}}
         component={WorkshopDetails}
-      />
-      <Stack.Screen
-        name="Indicate"
-        options={{title: 'Indique um amigo'}}
-        component={Indicate}
       />
     </Stack.Navigator>
   );
